@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12125ADD2285F05500A5C82A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12125ADC2285F05500A5C82A /* DetailViewController.swift */; };
 		12D15736228549A400F1D61F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D15735228549A400F1D61F /* AppDelegate.swift */; };
-		12D15738228549A400F1D61F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D15737228549A400F1D61F /* ViewController.swift */; };
 		12D1573B228549A400F1D61F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D15739228549A400F1D61F /* Main.storyboard */; };
 		12D1573D228549A500F1D61F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D1573C228549A500F1D61F /* Assets.xcassets */; };
 		12D15740228549A500F1D61F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1573E228549A500F1D61F /* LaunchScreen.storyboard */; };
+		12D157482285768700F1D61F /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D157472285768700F1D61F /* FilterButton.swift */; };
+		12D1574A228579E700F1D61F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D15749228579E700F1D61F /* HomeViewController.swift */; };
+		12D1574C228580A300F1D61F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D1574B228580A300F1D61F /* FilterView.swift */; };
+		C3268AD84D5B13647B802D23 /* Pods_klich.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7854ED971F77BFB58DC9F67 /* Pods_klich.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		064E15580282DCEE122C96A7 /* Pods-klich.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-klich.release.xcconfig"; path = "Pods/Target Support Files/Pods-klich/Pods-klich.release.xcconfig"; sourceTree = "<group>"; };
+		12125ADC2285F05500A5C82A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		12D15732228549A400F1D61F /* klich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = klich.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D15735228549A400F1D61F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		12D15737228549A400F1D61F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		12D1573A228549A400F1D61F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12D1573C228549A500F1D61F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D1573F228549A500F1D61F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D15741228549A500F1D61F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D157472285768700F1D61F /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		12D15749228579E700F1D61F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		12D1574B228580A300F1D61F /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		780B9207A0DBA87F1862A472 /* Pods-klich.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-klich.debug.xcconfig"; path = "Pods/Target Support Files/Pods-klich/Pods-klich.debug.xcconfig"; sourceTree = "<group>"; };
+		F7854ED971F77BFB58DC9F67 /* Pods_klich.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_klich.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3268AD84D5B13647B802D23 /* Pods_klich.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,8 @@
 			children = (
 				12D15734228549A400F1D61F /* klich */,
 				12D15733228549A400F1D61F /* Products */,
+				BDDF4A69BFABFE7C5DDD67D0 /* Pods */,
+				A436D77CE3F450B26E5C6FCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +68,33 @@
 			isa = PBXGroup;
 			children = (
 				12D15735228549A400F1D61F /* AppDelegate.swift */,
-				12D15737228549A400F1D61F /* ViewController.swift */,
+				12D157472285768700F1D61F /* FilterButton.swift */,
+				12D1574B228580A300F1D61F /* FilterView.swift */,
+				12125ADC2285F05500A5C82A /* DetailViewController.swift */,
+				12D15749228579E700F1D61F /* HomeViewController.swift */,
 				12D15739228549A400F1D61F /* Main.storyboard */,
 				12D1573C228549A500F1D61F /* Assets.xcassets */,
 				12D1573E228549A500F1D61F /* LaunchScreen.storyboard */,
 				12D15741228549A500F1D61F /* Info.plist */,
 			);
 			path = klich;
+			sourceTree = "<group>";
+		};
+		A436D77CE3F450B26E5C6FCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7854ED971F77BFB58DC9F67 /* Pods_klich.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDDF4A69BFABFE7C5DDD67D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				780B9207A0DBA87F1862A472 /* Pods-klich.debug.xcconfig */,
+				064E15580282DCEE122C96A7 /* Pods-klich.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12D15744228549A500F1D61F /* Build configuration list for PBXNativeTarget "klich" */;
 			buildPhases = (
+				C48791D485993398035004ED /* [CP] Check Pods Manifest.lock */,
 				12D1572E228549A300F1D61F /* Sources */,
 				12D1572F228549A300F1D61F /* Frameworks */,
 				12D15730228549A300F1D61F /* Resources */,
+				3FC1080C656388E597004BB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +165,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3FC1080C656388E597004BB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-klich/Pods-klich-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-klich/Pods-klich-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C48791D485993398035004ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-klich-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		12D1572E228549A300F1D61F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12D15738228549A400F1D61F /* ViewController.swift in Sources */,
+				12D1574C228580A300F1D61F /* FilterView.swift in Sources */,
+				12D157482285768700F1D61F /* FilterButton.swift in Sources */,
+				12125ADD2285F05500A5C82A /* DetailViewController.swift in Sources */,
 				12D15736228549A400F1D61F /* AppDelegate.swift in Sources */,
+				12D1574A228579E700F1D61F /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +367,7 @@
 		};
 		12D15745228549A500F1D61F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 780B9207A0DBA87F1862A472 /* Pods-klich.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +385,7 @@
 		};
 		12D15746228549A500F1D61F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 064E15580282DCEE122C96A7 /* Pods-klich.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

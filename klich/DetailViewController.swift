@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DetailViewController.swift
 //  klich
 //
 //  Created by Ryan Nazari on 5/10/19.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
 
+class DetailViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
+        
+        
     }
-
-
 }
-
