@@ -15,6 +15,7 @@ class Item: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var desc: String = ""
     @objc dynamic var vision: String = ""
+    @objc dynamic var date: Date?
 //    @objc dynamic var imgName: Data = UIImage()
     
 }

@@ -11,6 +11,7 @@
 		120ACC4B228958AB00FEDFE9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120ACC4A228958AB00FEDFE9 /* DataModel.swift */; };
 		120ACC4D2289693400FEDFE9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120ACC4C2289693400FEDFE9 /* ItemCell.swift */; };
 		12125ADD2285F05500A5C82A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12125ADC2285F05500A5C82A /* DetailViewController.swift */; };
+		122A1F12228C1302000BB36C /* SwipeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122A1F11228C1302000BB36C /* SwipeCellController.swift */; };
 		128118452288112800831261 /* CreateTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128118442288112800831261 /* CreateTodo.swift */; };
 		12D15736228549A400F1D61F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D15735228549A400F1D61F /* AppDelegate.swift */; };
 		12D1573B228549A400F1D61F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D15739228549A400F1D61F /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		120ACC4A228958AB00FEDFE9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		120ACC4C2289693400FEDFE9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		12125ADC2285F05500A5C82A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		122A1F11228C1302000BB36C /* SwipeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCellController.swift; sourceTree = "<group>"; };
 		128118442288112800831261 /* CreateTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodo.swift; sourceTree = "<group>"; };
 		12D15732228549A400F1D61F /* klich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = klich.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D15735228549A400F1D61F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				12D157472285768700F1D61F /* FilterButton.swift */,
 				12D15749228579E700F1D61F /* HomeViewController.swift */,
+				122A1F11228C1302000BB36C /* SwipeCellController.swift */,
 				128118442288112800831261 /* CreateTodo.swift */,
 				12125ADC2285F05500A5C82A /* DetailViewController.swift */,
 				120ACC4C2289693400FEDFE9 /* ItemCell.swift */,
@@ -230,6 +233,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-klich/Pods-klich-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -237,6 +241,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122A1F12228C1302000BB36C /* SwipeCellController.swift in Sources */,
 				120ACC4B228958AB00FEDFE9 /* DataModel.swift in Sources */,
 				128118452288112800831261 /* CreateTodo.swift in Sources */,
 				12D1574C228580A300F1D61F /* FilterView.swift in Sources */,

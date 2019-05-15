@@ -8,7 +8,10 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
+
+let notificationKey = "notificationKey"
 
 class HomeViewController: UIViewController {
 
@@ -18,6 +21,7 @@ class HomeViewController: UIViewController {
     
     let createTodo = CreateTodo()
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuView: FilterView!
     @IBOutlet weak var goalButton: UIButton!
     @IBOutlet weak var ideaButton: UIButton!
@@ -26,27 +30,35 @@ class HomeViewController: UIViewController {
     
     @IBAction func addButton(_ sender: Any) {
         createTodo.createNewItem()
+        createTodo.newItemDelegate = self
     }
     
-//    
-//    func save(item: Object) {
-//        
-//        do {
-//            try realm.write {
-//                realm.add(item)
-//                print(item)
-//            }
-//        } catch {
-//            print("there is error to save data")
-//        }
-//    }
+  
+    func save(item: Object) {
+        
+        do {
+            try realm.write {
+                realm.add(item)
+                
+            }
+        } catch {
+            print("there is error to save data")
+        }
+        collectionView.reloadData()
+    }
+
+    
+    func loadData() {
+        item = realm.objects(Item.self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         closeView()
+        loadData()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-        print(Realm.Configuration.defaultConfiguration.fileURL)
         
     }
     
@@ -81,16 +93,29 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     @IBAction func goalButton(_ sender: Any) {
+        item = realm.objects(Item.self)
+        UIView.performWithoutAnimation {
+            self.item = self.item?.filter("vision CONTAINS[cd] %@", self.goalButton.currentTitle ?? "Goal").sorted(byKeyPath: "date", ascending: true)
+            self.collectionView.reloadData()
+        }
+      
     }
+    
     @IBAction func ideaButton(_ sender: Any) {
+        item = realm.objects(Item.self)
+        UIView.performWithoutAnimation {
+            self.item = self.item?.filter("vision CONTAINS[cd] %@", self.ideaButton.currentTitle ?? "Idea").sorted(byKeyPath: "date", ascending: true)
+            self.collectionView.reloadData()
+        }
     }
+    
     @IBAction func contactButton(_ sender: Any) {
     }
 
     
 }
 
-
+// MARK: Extenssion collectionview
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -99,11 +124,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ItemCell
-        cell.backgroundColor = .cyan
+        
+        cell.backgroundColor = #colorLiteral(red: 0.1922, green: 0.1922, blue: 0.1922, alpha: 1) /* #313131 */
         cell.layer.cornerRadius = 10
-        cell.titleLable.text = "hellow"
-        cell.descLable.text = "this is forom description"
-        cell.image.image = UIImage(named: "add")
+        cell.titleLable.text = item?[indexPath.item].title
+        cell.titleLable.textColor = .white
+        cell.descLable.text = item?[indexPath.item].desc
+        cell.descLable.textColor = .white
+        let vision = item?[indexPath.item].vision
+        if vision == "Goal" {
+            cell.image.image = UIImage(named: "goal")
+            cell.image.tintColor = .white
+        } else {
+            cell.image.image = UIImage(named: "idea")
+            cell.image.tintColor = .white
+        }
+        
         return cell
     }
     
@@ -112,3 +148,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
 }
+
+
+
+// MARK: Extenssion new item
+extension HomeViewController: AddNewItemDelegate {
+    
+    func addNewItem(item: Object) {
+        save(item: item)
+    }
+}
+

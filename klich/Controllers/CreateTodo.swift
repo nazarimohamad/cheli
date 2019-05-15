@@ -10,15 +10,23 @@ import UIKit
 import  RealmSwift
 
 
-class CreateTodo: NSObject {
+protocol AddNewItemDelegate {
+    func addNewItem(item: Object)
+}
+
+
+class CreateTodo: UIViewController {
     
      let realm = try! Realm()
      var item: Results<Item>?
+    
+    var newItemDelegate: AddNewItemDelegate!
     
     let blackView = UIView()
     
     let whiteView: UIView = {
         let whiteView = UIView()
+        whiteView.layer.cornerRadius = 8
         whiteView.backgroundColor = .white
         return whiteView
     }()
@@ -81,34 +89,39 @@ class CreateTodo: NSObject {
     @objc func handleCreateItemButtomPressed() {
         
         let newItem = Item()
+        
         guard let title = titleTextField.text else {return}
         guard let description = descTextView.text else {return}
-        if let vision = selectedButton.currentTitle {
+        guard let vision = selectedButton.currentTitle else {return}
+
+        
+        if title.isEmpty || description.isEmpty {
+            print("the field is empthy")
+        } else {
             newItem.title = title
             newItem.desc = description
             newItem.vision = vision
+            newItem.date = Date()
             
-            save(item: newItem)
+            newItemDelegate.addNewItem(item: newItem)
+            clearTextInputs()
         }
-    }
-    
-    
-    func save(item: Object) {
         
-        do {
-            try realm.write {
-                realm.add(item)
-                print(item)
-            }
-        } catch {
-            print("there is error to save data")
-        }
     }
-
     
-    override init() {
-        super.init()
-
+    
+    func clearTextInputs() {
+        titleTextField.text = ""
+        descTextView.text = ""
+        selectedButton.setTitle("tap to select your vision", for: .normal)
+        
+        textViewDidEndEditing(descTextView)
+        handleDismiss()
+    }
+    
+    // MARK: Initialzing the class
+    convenience init() {
+        self.init(nibName:nil, bundle:nil)
         
         stackView.addArrangedSubview(selectedButton)
         stackView.addArrangedSubview(goalButton)
@@ -140,9 +153,7 @@ class CreateTodo: NSObject {
         
     }
     
-    
-
-    
+    // MARK: Create views
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
@@ -155,10 +166,10 @@ class CreateTodo: NSObject {
     lazy var selectedButton: UIButton = {
         let sb = UIButton()
         sb.setTitle("tap to select your vision", for: .normal)
-        sb.setTitleColor(.black, for: .normal)
+        sb.setTitleColor(.lightGray, for: .normal)
         sb.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         sb.layer.borderWidth = 0.3
-        sb.layer.borderColor = UIColor.black.cgColor
+        sb.layer.borderColor = UIColor(white: 0.5, alpha: 1).cgColor
         sb.addTarget(self, action: #selector(handleSelectedButton), for: .touchUpInside)
         sb.translatesAutoresizingMaskIntoConstraints = false
         return sb
@@ -217,7 +228,7 @@ class CreateTodo: NSObject {
         cb.setTitle("Create", for: .normal)
         cb.setTitleColor(.white, for: .normal)
         cb.titleLabel?.font = UIFont.systemFont(ofSize: 25)
-        cb.backgroundColor = .black
+        cb.backgroundColor = #colorLiteral(red: 0.1922, green: 0.1922, blue: 0.1922, alpha: 1) /* #313131 */
         cb.layer.cornerRadius = 10
         cb.addTarget(self, action: #selector(handleCreateItemButtomPressed), for: .touchUpInside)
         cb.translatesAutoresizingMaskIntoConstraints = false
@@ -227,7 +238,7 @@ class CreateTodo: NSObject {
 }
 
 
-
+// MARK: Text view Delegate
 extension CreateTodo: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
