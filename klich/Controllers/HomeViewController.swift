@@ -10,9 +10,6 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
-
-let notificationKey = "notificationKey"
-
 class HomeViewController: UIViewController {
 
     
@@ -47,6 +44,16 @@ class HomeViewController: UIViewController {
         collectionView.reloadData()
     }
 
+    func deleteItem(item: Object) {
+        do {
+            try realm.write {
+                realm.delete(item)
+            }
+        } catch {
+            print("error to delete this cell")
+        }
+    }
+    
     
     func loadData() {
         item = realm.objects(Item.self)
@@ -116,14 +123,14 @@ extension HomeViewController {
 }
 
 // MARK: Extenssion collectionview
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SwipeCollectionViewCellDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return item?.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ItemCell
         
         cell.backgroundColor = #colorLiteral(red: 0.1922, green: 0.1922, blue: 0.1922, alpha: 1) /* #313131 */
         cell.layer.cornerRadius = 10
@@ -140,11 +147,35 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.image.tintColor = .white
         }
         
+        cell.delegate = self
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - 30, height: 90)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "") { action, indexPath in
+            
+            print("delete this cell successfuly")
+            self.deleteItem(item: self.item![indexPath.item])
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+        
+        return [deleteAction]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        return options
     }
 
 }
